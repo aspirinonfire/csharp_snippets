@@ -14,6 +14,15 @@ namespace Benchmarks
         }
     }
 
+    /// <summary>
+    /// |                          Method |          Mean |        Error |       StdDev |    Ratio | RatioSD |  Gen 0 |  Gen 1 | Gen 2 | Allocated |
+    /// |-------------------------------- |--------------:|-------------:|-------------:|---------:|--------:|-------:|-------:|------:|----------:|
+    /// |          CreateInstanceManually |      57.04 ns |     1.172 ns |     1.349 ns |     1.00 |    0.00 | 0.0153 |      - |     - |      32 B |
+    /// |                  CreateInstance |   1,039.87 ns |    18.089 ns |    17.766 ns |    18.14 |    0.58 | 0.1030 |      - |     - |     216 B |
+    /// |                   CreateFactory | 408,516.88 ns | 5,442.610 ns | 4,824.732 ns | 7,114.47 |  140.52 | 2.9297 | 1.4648 |     - |    6489 B |
+    /// |            CreateFactoryGeneric | 410,609.53 ns | 7,565.025 ns | 7,076.329 ns | 7,164.69 |  154.24 | 2.9297 | 1.4648 |     - |    6537 B |
+    /// | CreateInstanceFromCachedFactory |      74.80 ns |     1.532 ns |     1.703 ns |     1.31 |    0.05 | 0.0305 |      - |     - |      64 B |
+    /// </summary>
     [MemoryDiagnoser]
     public class ActivatorHelperBenchmark
     {
